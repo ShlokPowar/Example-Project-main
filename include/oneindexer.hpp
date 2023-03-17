@@ -1,0 +1,1 @@
+void single_index();
