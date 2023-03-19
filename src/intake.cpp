@@ -14,3 +14,13 @@ void setIntake(){
         intake.move_voltage(0);
     }
 }
+
+void pleaseMoveOrElse(double v) {
+    if (intake.get_actual_velocity() == 0) {
+        intake.brake();
+    }
+
+    pros::delay(1);
+
+    intake.move_voltage(v);
+}
