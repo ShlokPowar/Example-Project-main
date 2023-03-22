@@ -20,7 +20,5 @@ void pleaseMoveOrElse(double v) {
         intake.brake();
     }
 
-    pros::delay(1);
-
     intake.move_voltage(v);
 }

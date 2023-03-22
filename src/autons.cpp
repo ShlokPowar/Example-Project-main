@@ -57,7 +57,7 @@ void two_mogo_constants() {
 void exit_condition_defaults() {
   chassis.set_exit_condition(chassis.turn_exit, 100, 3, 500, 7, 500, 500);
   chassis.set_exit_condition(chassis.swing_exit, 100, 3, 500, 7, 500, 500);
-  chassis.set_exit_condition(chassis.drive_exit, 80, 50, 300, 150, 500, 500);
+  chassis.set_exit_condition(chassis.drive_exit, 60, 62.5, 225, 187.5, 500, 500);
 }
 
 void modified_exit_condition() {
@@ -843,35 +843,35 @@ void non_roller_2(){
 }
 
 void solo_wp(){
-  flywheel.move_voltage(11530);
+  flywheel.move_voltage(11700); //11590
 
   pleaseMoveOrElse(-12000); // do roller 1
-  chassis.set_drive_pid(2.2, 127); // engage roller
+  chassis.set_drive_pid(2.5, 127); // engage roller
 
-  pros::delay(373);
+  pros::delay(375);
 
   intake.brake();
   chassis.wait_drive();
 
   // flywheel.move_voltage(11000);
 
-  chassis.set_drive_pid(-3.75, 127);
+  chassis.set_drive_pid(-4.05, 127);
   chassis.wait_drive();
-  chassis.set_turn_pid(-7.875, 127);
+  chassis.set_turn_pid(-8.5, 127);
   chassis.wait_drive();
 
  //flywheel.move_voltage(10990); //11020
 
-  pros::delay(315);
+  pros::delay(350);
 
   indexerSingle.set_value(true);
   pros::delay(10);
   indexerSingle.set_value(false);
-  pros::delay(920);
+  pros::delay(700);
   indexerSingle.set_value(true);
   pros::delay(10);
   indexerSingle.set_value(false);
-  pros::delay(30);
+  pros::delay(300);
 
   flywheel.move_voltage(10250);
 
@@ -879,14 +879,14 @@ void solo_wp(){
   chassis.wait_drive();
   chassis.set_drive_pid(11.5, 127);
   chassis.wait_drive();
-  pros::delay(75);
-  chassis.set_drive_pid(13.25, 90);
+  pros::delay(50);
+  chassis.set_drive_pid(13.25, 45);
   pleaseMoveOrElse(12000);
   chassis.wait_drive();
 
   pros::delay(875);
 
-  chassis.set_turn_pid(-38.05, 127);
+  chassis.set_turn_pid(-39, 127);
   chassis.wait_drive();
 
   pros::delay(315);
@@ -906,40 +906,44 @@ void solo_wp(){
   indexerSingle.set_value(true);
   pros::delay(10);
   indexerSingle.set_value(false);
-  pros::delay(540); //1000
+  pros::delay(550); //1000
   indexerSingle.set_value(true);
   pros::delay(10);
   indexerSingle.set_value(false);
+  pros::delay(550); 
+  indexerSingle.set_value(true);
+  pros::delay(10);
+  indexerSingle.set_value(false);
+  
 
   flywheel.move_voltage(10500);
 
-  pros::delay(30);
-
-  pleaseMoveOrElse(12000);
-  chassis.set_turn_pid(-135, 127);
-  chassis.wait_drive();
-  chassis.set_drive_pid(16, 127);
-  chassis.wait_drive();
-  pros::delay(190);
-  chassis.set_turn_pid(-52, 127);
-  chassis.wait_drive();
-  
-  pros::delay(60);
-
-  indexerSingle.set_value(true);
-  pros::delay(10);
-  indexerSingle.set_value(false);
-  pros::delay(25); //1000
-
-  flywheel.brake();
+  pros::delay(25);
 
   pleaseMoveOrElse(12000);
   chassis.set_turn_pid(-140, 127);
   chassis.wait_drive();
-  chassis.set_drive_pid(13.15, 127);
-  pleaseMoveOrElse(-12000);
+  chassis.set_drive_pid(29.1, 120);
   chassis.wait_drive();
-  chassis.set_swing_pid(LEFT_SWING, -100, 127);
-  pros::delay(104.32345676543234565434565);
+  // pros::delay(190);
+  // chassis.set_turn_pid(-52.75, 127);
+  // chassis.wait_drive();
+  
+  // pros::delay(60);
+
+  // indexerSingle.set_value(true);
+  // pros::delay(10);
+  // indexerSingle.set_value(false);
+  // pros::delay(25); //1000
+
+  flywheel.brake();
+
+  // pleaseMoveOrElse(12000);
+  // chassis.set_turn_pid(-140, 127);
+  // chassis.wait_drive();
+  // chassis.set_drive_pid(13.1, 127);
+  chassis.set_swing_pid(LEFT_SWING, -90, 127);
+  chassis.wait_drive();
+  pleaseMoveOrElse(-12000);
   chassis.set_drive_pid(6, 127);
 }
