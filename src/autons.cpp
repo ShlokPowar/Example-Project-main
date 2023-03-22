@@ -620,7 +620,7 @@ void test_skills() { // programmers skills but the test version
   // Step 10: get other two rollers
 
   pros::delay(1000);
-  flywheel.move_voltage(0);
+  flywheel.brake();
 
   chassis.set_turn_pid(-182, 25);
   chassis.wait_drive();
@@ -778,7 +778,7 @@ void other_skills(){
   chassis.set_turn_pid(-139, 110);
   chassis.wait_drive();
 
-  chassis.set_drive_pid(10, 120);
+  chassis.set_drive_pid(7, 120);
   chassis.wait_drive();
   chassis.set_turn_pid(-180, 100);
   chassis.wait_drive();
