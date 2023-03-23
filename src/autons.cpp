@@ -670,7 +670,7 @@ void test_skills() { // programmers skills but the test version
 
 void other_skills(){
   intake.move_voltage(5000); // do roller 1
-  chassis.set_drive_pid(1.75, 100); // engage roller
+  chassis.set_drive_pid(2, 100); // engage roller
 
   pros::delay(500);
 
@@ -716,6 +716,10 @@ void other_skills(){
   indexerSingle.set_value(true);
   pros::delay(10);
   indexerSingle.set_value(false);
+  pros::delay(750);
+  indexerSingle.set_value(true);
+  pros::delay(10);
+  indexerSingle.set_value(false);
 
   chassis.set_turn_pid(0, 110);
   chassis.wait_drive();
@@ -742,6 +746,10 @@ void other_skills(){
   pros::delay(10);
   indexerSingle.set_value(false);
   pros::delay(300);
+  indexerSingle.set_value(true);
+  pros::delay(10);
+  indexerSingle.set_value(false);
+  pros::delay(750);
   indexerSingle.set_value(true);
   pros::delay(10);
   indexerSingle.set_value(false);
@@ -772,13 +780,17 @@ void other_skills(){
   indexerSingle.set_value(true);
   pros::delay(10);
   indexerSingle.set_value(false);
+  pros::delay(750);
+  indexerSingle.set_value(true);
+  pros::delay(10);
+  indexerSingle.set_value(false);
 
   chassis.set_drive_pid(5, 100);
   chassis.wait_drive();
   chassis.set_turn_pid(-139, 110);
   chassis.wait_drive();
 
-  chassis.set_drive_pid(7, 120);
+  chassis.set_drive_pid(3, 120);
   chassis.wait_drive();
   chassis.set_turn_pid(-180, 100);
   chassis.wait_drive();
@@ -798,7 +810,7 @@ void other_skills(){
   chassis.wait_drive();
   chassis.set_drive_pid(5, 100);
 
-  expansion.set_value(true);
+  // expansion.set_value(true);
 }
 
 void non_roller_2(){
