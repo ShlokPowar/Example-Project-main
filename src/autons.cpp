@@ -270,34 +270,34 @@ void interfered_example() {
 //   flywheel.move_voltage(0);
 // }
 
-void not_roller_side() { // normal auton but for if you start on the side thats to the left of the roller
-  // what this does is
-  // 1. get roller (should be started FACING the roller)
+// void not_roller_side() { // normal auton but for if you start on the side thats to the left of the roller
+//   // what this does is
+//   // 1. get roller (should be started FACING the roller)
 
-  chassis.set_drive_pid(10, 70);
-  chassis.wait_drive();
-  chassis.set_turn_pid(90.0, 100);
-  chassis.wait_drive();
+//   chassis.set_drive_pid(10, 70);
+//   chassis.wait_drive();
+//   chassis.set_turn_pid(90.0, 100);
+//   chassis.wait_drive();
   
-  intake.move_voltage(12000); // do rollers
-  chassis.set_drive_pid(3, 100); // move forward while intaking to keep contact with rollers
-  pros::delay(500);
-  intake.brake();
-  chassis.wait_drive();
-  chassis.set_drive_pid(-3.5,110);
-  chassis.wait_drive();
-  chassis.set_turn_pid(-10, -50);
-  chassis.wait_drive();
-  chassis.left_motors[0].brake();
-  chassis.left_motors[1].brake();
-  chassis.right_motors[0].brake();
-  chassis.right_motors[1].brake();
+//   intake.move_voltage(12000); // do rollers
+//   chassis.set_drive_pid(3, 100); // move forward while intaking to keep contact with rollers
+//   pros::delay(500);
+//   intake.brake();
+//   chassis.wait_drive();
+//   chassis.set_drive_pid(-3.5,110);
+//   chassis.wait_drive();
+//   chassis.set_turn_pid(-10, -50);
+//   chassis.wait_drive();
+//   chassis.left_motors[0].brake();
+//   chassis.left_motors[1].brake();
+//   chassis.right_motors[0].brake();
+//   chassis.right_motors[1].brake();
 
-  pros::delay(500);
+//   pros::delay(500);
 
-  intake.brake();
-; // not sure if the robot will get stuck moving into the roller, so this is to hopefully stop the drivetrain
-}
+//   intake.brake();
+// ; // not sure if the robot will get stuck moving into the roller, so this is to hopefully stop the drivetrain
+// }
 
 void roller_side_single() { // normal auton but with single indexer
   // what this does is
@@ -306,12 +306,12 @@ void roller_side_single() { // normal auton but with single indexer
   // 3. shoot disks with single indexer
   //
   // should have one disk in storage and the other in intake            
-  flywheel.move_voltage(11035);
+  flywheel.move_voltage(11950);
 
-  intake.move_voltage(-10500); // do roller 1
+  intake.move_voltage(-10750); // do roller 1
   chassis.set_drive_pid(2, 100); // engage roller
 
-  pros::delay(500);
+  pros::delay(415);
 
   intake.brake();
   chassis.wait_drive();
@@ -320,7 +320,7 @@ void roller_side_single() { // normal auton but with single indexer
 
   chassis.set_drive_pid(-3.5, 120);
   chassis.wait_drive();
-  chassis.set_turn_pid(-10, 60);
+  chassis.set_turn_pid(-9, 60);
   chassis.wait_drive();
   chassis.left_motors[0].brake();
   chassis.left_motors[1].brake();
@@ -329,31 +329,37 @@ void roller_side_single() { // normal auton but with single indexer
 
  //flywheel.move_voltage(10990); //11020
 
-  pros::delay(325);
+  pros::delay(900);
 
   indexerSingle.set_value(true);
   pros::delay(10);
   indexerSingle.set_value(false);
-  pros::delay(1000);
+  pros::delay(1200);
   indexerSingle.set_value(true);
   pros::delay(10);
   indexerSingle.set_value(false);
   pros::delay(1000);
 
-  flywheel.move_voltage(10350); //brake
+  flywheel.brake();
 
-  chassis.set_turn_pid(-123.5, 80);
+  chassis.set_turn_pid(-129.5, 80);
   chassis.wait_drive();
   chassis.set_drive_pid(12, 127);
   chassis.wait_drive();
-  chassis.set_drive_pid(12.75, 30);
+  chassis.set_drive_pid(11.25, 30);
   intake.move_voltage(12000);
   chassis.wait_drive();
 
-  pros::delay(1500);
+  pros::delay(520);
 
-  chassis.set_turn_pid(-35, 80);
+  flywheel.move_voltage(11350);
+
+  pros::delay(900);
+
+  chassis.set_turn_pid(-40, 120);
   chassis.wait_drive();
+
+  pros::delay(1100);
   
   // flywheel.move_voltage(10650); //10875
 
@@ -362,18 +368,18 @@ void roller_side_single() { // normal auton but with single indexer
   indexerSingle.set_value(true);
   pros::delay(10);
   indexerSingle.set_value(false);
-  pros::delay(1500);
+  pros::delay(1200);
 
   intake.move_voltage(-12000);
 
   indexerSingle.set_value(true);
   pros::delay(10);
   indexerSingle.set_value(false);
-  pros::delay(1250); //1000
+  pros::delay(1200); //1000
   indexerSingle.set_value(true);
   pros::delay(10);
   indexerSingle.set_value(false);
-  pros::delay(550);
+  pros::delay(100);
 
   // scuffed
 
@@ -669,17 +675,18 @@ void test_skills() { // programmers skills but the test version
 }
 
 void other_skills(){
-  intake.move_voltage(5000); // do roller 1
+  intake.move_voltage(-9000); // do roller 1
   chassis.set_drive_pid(2, 100); // engage roller
 
-  pros::delay(500);
+  pros::delay(375);
 
   chassis.wait_drive();
 
-  intake.move_voltage(12000);
+  
   // Step 2: shoot two disks
   chassis.set_drive_pid(-2, 90);
   chassis.wait_drive();
+  intake.move_voltage(12000);
   chassis.set_turn_pid(135,80);
   chassis.wait_drive();
   chassis.set_drive_pid(3, 120);
@@ -688,14 +695,14 @@ void other_skills(){
   chassis.wait_drive();
   chassis.set_drive_pid(10, 30);
   chassis.wait_drive();
-  intake.move_voltage(5000);
+  intake.move_voltage(-9000);
   chassis.set_drive_pid(1.5,100);
   pros::delay(500);
   chassis.set_drive_pid(-3, 70);
   chassis.wait_drive();
+  intake.move_voltage(12000);
   chassis.set_turn_pid(0, 110);
   chassis.wait_drive();
-  intake.move_voltage(12000);
 
   flywheel.move_voltage(10500);
   
@@ -721,16 +728,18 @@ void other_skills(){
   pros::delay(10);
   indexerSingle.set_value(false);
 
+  flywheel.brake();
+
   chassis.set_turn_pid(0, 110);
   chassis.wait_drive();
-  chassis.set_drive_pid(21, 110);
+  chassis.set_drive_pid(19, 110);
   chassis.wait_drive();
   chassis.set_turn_pid(-138, 110);
   chassis.wait_drive();
   intake.move_voltage(12000);
-  flywheel.move_voltage(9000);
   chassis.set_drive_pid(28, 70);
   chassis.wait_drive();
+  flywheel.move_voltage(9020);
   chassis.set_turn_pid(-42, 110);
   chassis.wait_drive();
   chassis.set_drive_pid(-5, 100);
@@ -754,6 +763,8 @@ void other_skills(){
   pros::delay(10);
   indexerSingle.set_value(false);
 
+  flywheel.brake();
+
   chassis.set_drive_pid(5, 100);
   chassis.wait_drive();
   chassis.set_turn_pid(-139, 110);
@@ -762,7 +773,8 @@ void other_skills(){
   chassis.wait_drive();
   chassis.set_drive_pid(13, 50);
   chassis.wait_drive();
-  chassis.set_turn_pid(-84, 100);
+  flywheel.move_voltage(9600);
+  chassis.set_turn_pid(-88, 100);
   chassis.wait_drive();
   chassis.set_drive_pid(-5, 100);
   chassis.wait_drive();
@@ -785,44 +797,67 @@ void other_skills(){
   pros::delay(10);
   indexerSingle.set_value(false);
 
+  flywheel.brake();
+
   chassis.set_drive_pid(5, 100);
   chassis.wait_drive();
   chassis.set_turn_pid(-139, 110);
   chassis.wait_drive();
 
-  chassis.set_drive_pid(3, 120);
+  // chassis.set_drive_pid(3, 120);
+  // chassis.wait_drive();
+  chassis.set_swing_pid(RIGHT_SWING, -180, 100);
   chassis.wait_drive();
-  chassis.set_turn_pid(-180, 100);
-  chassis.wait_drive();
+  
 
-  intake.move_voltage(5000); // do roller 1
-  chassis.set_drive_pid(1.75, 100); // engage roller
+  intake.move_voltage(-9000); // do roller 1
+  chassis.set_drive_pid(1.5, 100); // engage roller
 
-  pros::delay(500);
+  pros::delay(365);
 
   chassis.wait_drive();
 
   intake.brake();
 
-  chassis.set_drive_pid(-5, 100);
+  chassis.set_drive_pid(-2, 100);
   chassis.wait_drive();
-  chassis.set_turn_pid(-135, 100);
-  chassis.wait_drive();
-  chassis.set_drive_pid(5, 100);
+  // chassis.set_turn_pid(-135, 100);
+  // chassis.wait_drive();
+  // chassis.set_drive_pid(5, 100);
 
-  // expansion.set_value(true);
-}
 
-void non_roller_2(){
+
+
+
   intake.move_voltage(12000);
-  chassis.set_drive_pid(8, 70);
+  // Step 2: shoot two disks
+  chassis.set_drive_pid(-2, 90);
   chassis.wait_drive();
-  flywheel.move_voltage(11000);
-  chassis.set_turn_pid(-157, 90);
+  chassis.set_turn_pid(-45, 80);
+  chassis.wait_drive();
+  chassis.set_drive_pid(3, 120);
+  chassis.wait_drive();
+  chassis.set_turn_pid(-90, 70);
+  chassis.wait_drive();
+  chassis.set_drive_pid(6.75, 30);
+  chassis.wait_drive();
+  intake.move_voltage(-9000);
+  chassis.set_drive_pid(2.25, 100);
+  pros::delay(525);
+  chassis.set_drive_pid(-3, 70);
+  chassis.wait_drive();
+  chassis.set_turn_pid(-180, 110);
+  chassis.wait_drive();
+  intake.move_voltage(12000);
+
+  flywheel.move_voltage(10500);
+  
+  chassis.set_drive_pid(-27,110);
+  chassis.wait_drive();
+  chassis.set_turn_pid(-169.5, 100);
   chassis.wait_drive();
 
-  pros::delay(1750);
-
+  //index
   indexerSingle.set_value(true);
   pros::delay(10);
   indexerSingle.set_value(false);
@@ -830,7 +865,35 @@ void non_roller_2(){
   indexerSingle.set_value(true);
   pros::delay(10);
   indexerSingle.set_value(false);
-  pros::delay(750);
+  pros::delay(300);
+
+  flywheel.brake();
+
+  chassis.set_turn_pid(-180, 110);
+  chassis.wait_drive();
+  chassis.set_drive_pid(19, 110);
+  chassis.wait_drive();
+  chassis.set_turn_pid(-318, 110);
+  chassis.wait_drive();
+  intake.move_voltage(12000);
+  chassis.set_drive_pid(28, 70);
+  chassis.wait_drive();
+  flywheel.move_voltage(10500);
+  chassis.set_turn_pid(-222, 110);
+  chassis.wait_drive();
+  chassis.set_drive_pid(-4.75, 100);
+  chassis.wait_drive();
+
+  pros::delay(500);
+  
+  indexerSingle.set_value(true);
+  pros::delay(10);
+  indexerSingle.set_value(false);
+  pros::delay(300); //1000
+  indexerSingle.set_value(true);
+  pros::delay(10);
+  indexerSingle.set_value(false);
+  pros::delay(300);
   indexerSingle.set_value(true);
   pros::delay(10);
   indexerSingle.set_value(false);
@@ -838,20 +901,102 @@ void non_roller_2(){
   indexerSingle.set_value(true);
   pros::delay(10);
   indexerSingle.set_value(false);
+
+  flywheel.brake();
+
+  chassis.set_drive_pid(5, 100);
+  chassis.wait_drive();
+  chassis.set_turn_pid(-319, 110);
+  chassis.wait_drive();
+  chassis.set_drive_pid(15, 127);
+  chassis.wait_drive();
+  chassis.set_drive_pid(13, 50);
+  chassis.wait_drive();
+  flywheel.move_voltage(10250);
+  chassis.set_turn_pid(-268, 100);
+  chassis.wait_drive();
+  chassis.set_drive_pid(-5, 100);
+  chassis.wait_drive();
+
+  pros::delay(500);
+  
+  indexerSingle.set_value(true);
+  pros::delay(10);
+  indexerSingle.set_value(false);
+  pros::delay(300); //1000
+  indexerSingle.set_value(true);
+  pros::delay(10);
+  indexerSingle.set_value(false);
+  pros::delay(300);
+  indexerSingle.set_value(true);
+  pros::delay(10);
+  indexerSingle.set_value(false);
+  pros::delay(750);
+  indexerSingle.set_value(true);
+  pros::delay(10);
+  indexerSingle.set_value(false);
+
+  flywheel.brake();
+
+  intake.brake();
+  chassis.set_drive_pid(9, 100);
+  chassis.wait_drive();
+  chassis.set_turn_pid(45, 110);
+  chassis.wait_drive();
+  chassis.set_drive_pid(5, 120);
+  chassis.wait_drive();
+  
+
+  expansion.set_value(true);
+}
+
+void not_roller_side(){
+  flywheel.move_voltage(-100);
+  intake.move_voltage(12000);
+  chassis.set_drive_pid(3.15, 120);
+  chassis.wait_drive();
+  chassis.set_turn_pid(-5, 120);
+  chassis.wait_drive();
+  chassis.set_drive_pid(8, 70);
+  chassis.wait_drive();
+  flywheel.move_voltage(11115);
+  chassis.set_turn_pid(-154.75, 120);
+  chassis.wait_drive();
+
+  pros::delay(1025);
+
+  indexerSingle.set_value(true);
+  pros::delay(10);
+  indexerSingle.set_value(false);
+  pros::delay(1000); //1000
+  indexerSingle.set_value(true);
+  pros::delay(10);
+  indexerSingle.set_value(false);
+  pros::delay(1000);
+  indexerSingle.set_value(true);
+  pros::delay(10);
+  indexerSingle.set_value(false);
+  pros::delay(1000);
+  indexerSingle.set_value(true);
+  pros::delay(10);
+  indexerSingle.set_value(false);
+
+  pros::delay(150);
 
   chassis.set_turn_pid(135, 90);
   chassis.wait_drive();
-  chassis.set_drive_pid(9, 90);
+  chassis.set_drive_pid(12, 120);
   chassis.wait_drive();
   chassis.set_turn_pid(180, 90);
   chassis.wait_drive();
-  intake.move_voltage(-6000);
-  chassis.set_drive_pid(1.75, 60);
-  chassis.wait_drive();
-  pros::delay(250);
-  chassis.set_drive_pid(-2, 90);
-  chassis.wait_drive();
+  intake.move_voltage(-10750); // do roller 1
+  chassis.set_drive_pid(4.75, 100); // engage roller
 
+  pros::delay(475);
+
+  intake.brake();
+  chassis.wait_drive();
+  chassis.set_drive_pid(-2, 100);
 }
 
 void solo_wp(){

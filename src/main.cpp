@@ -77,11 +77,10 @@ void initialize() {
 
   // Autonomous Selector using LLEMU
   ez::as::auton_selector.add_autons({
-    Auton("Roller side auton (win point)\n\n", other_skills),
     Auton("Roller side auton (normal)", roller_side_single),
+    Auton("Roller side auton (win point)\n\n", solo_wp),
     Auton("Not roller side auton\n\n",not_roller_side),
-    Auton("Skills\n\n", solo_wp),
-    Auton("Skills (test)\n\n", roller_side_single)
+    Auton("Skills\n\n", other_skills),
   });
 
   // Initialize chassis and auton selector
@@ -166,7 +165,6 @@ void opcontrol() {
     // . . .
     setIntake();
     toggle_flywheel();
-    set_indexer();
     single_index();
     expand();
 

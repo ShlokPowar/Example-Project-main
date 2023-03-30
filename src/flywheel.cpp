@@ -1,7 +1,8 @@
 #include "main.h"
 #include "headers.hpp"
 
-int rpms[3] = {0, 9333, 11166};
+
+int rpms[3] = {0, 9400, 11166};
 int mode = 0;
 
 void toggle_flywheel(){
